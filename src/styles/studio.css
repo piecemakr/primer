@@ -1,4 +1,5 @@
-/* Studio-specific CSS reset to prevent the 20px scroll issue */
+/* ===== STUDIO-SPECIFIC CSS ===================================== */
+
 html,
 body {
   margin: 0 !important;
@@ -7,7 +8,6 @@ body {
   overflow: hidden !important;
 }
 
-/* Ensure Sanity Studio root container takes full height */
 [data-sanity-root] {
   height: 100vh !important;
   overflow: hidden !important;

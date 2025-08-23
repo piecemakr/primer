@@ -25,9 +25,5 @@ function HeaderNavMobile() {
 }
 
 function HeaderLogo() {
-  return (
-    <>
-      
-    </>
-  );
+  return <></>;
 }

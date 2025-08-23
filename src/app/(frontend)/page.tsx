@@ -1,14 +1,11 @@
+'use client';
 
-
-export default async function Page() {
-
+export default function Page() {
   return (
     <>
-      <section className='section relative'>
-        <div className='container'>
-
-
-          
+      <section className="section relative">
+        <div className="container">
+          <h1>Hello World</h1>
         </div>
       </section>
     </>

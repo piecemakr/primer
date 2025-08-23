@@ -33,8 +33,7 @@ export const socialType = defineType({
       name: 'url',
       title: 'URL',
       type: 'url',
-      validation: (Rule) =>
-        Rule.uri({ scheme: ['http', 'https'] }).required(),
+      validation: (Rule) => Rule.uri({ scheme: ['http', 'https'] }).required(),
     }),
     defineField({
       name: 'order',

@@ -2,7 +2,7 @@ import { getMetadata } from './metadata';
 
 export default async function sitemap() {
   const metadata = await getMetadata();
-  const baseUrl = metadata?.canonicalUrl || 'https://easyliftdoors.com';
+  const baseUrl = metadata?.canonicalUrl || 'https://primer.eveninglabs.io';
 
   // Add your static routes here
   const routes = [

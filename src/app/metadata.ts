@@ -148,11 +148,11 @@ export async function generateMetadata(
   const image = pageImage || metadata.ogImage;
 
   return {
-    title: title || 'EasyLift Doors',
-    description: description || 'Professional garage door services in Canada',
+    title: title || 'PRIMER',
+    description: description || 'A template repository for modern front-end Next.js 15+ builds.',
     keywords: metadata.keywords || undefined,
-    authors: [{ name: metadata.siteAuthor || 'EasyLift Doors' }],
-    creator: metadata.siteAuthor || 'EasyLift Doors',
+    authors: [{ name: metadata.siteAuthor || 'Evening Labs' }],
+    creator: metadata.siteAuthor || 'Evening Labs | piecemakr',
     publisher: metadata.sitePublisher || undefined,
     robots: {
       index: metadata.robotsIndex !== false,
@@ -164,7 +164,7 @@ export async function generateMetadata(
         }
       : undefined,
     alternates: {
-      canonical: metadata.canonicalUrl || 'https://easyliftdoors.com',
+      canonical: metadata.canonicalUrl || 'https://primer.eveninglabs.io',
     },
     openGraph: {
       title: title || metadata.siteTitle || undefined,
@@ -179,7 +179,7 @@ export async function generateMetadata(
             },
           ]
         : undefined,
-      locale: metadata.ogLocale || 'en_CA',
+      locale: metadata.ogLocale || 'en_US',
       type:
         (metadata.ogType as
           | 'website'
@@ -237,7 +237,7 @@ export async function generateMetadata(
       'apple-mobile-web-app-title':
         metadata.appleMobileWebAppTitle ||
         metadata.siteTitle ||
-        'EasyLift Doors',
+        'PRIMER',
     },
   };
 }

@@ -8,12 +8,8 @@ export const structure: StructureResolver = (S) =>
     .items([
       ...S.documentTypeListItems().filter(
         (item) =>
-          item.getId() &&
-          !['metadata', 'social', 'team'].includes(item.getId()!)
+          item.getId() && !['metadata', 'social'].includes(item.getId()!)
       ),
-      S.divider(),
-
-      S.documentTypeListItem('team').title('Team Members').icon(UserIcon),
 
       S.divider(),
 
