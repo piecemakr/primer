@@ -149,7 +149,9 @@ export async function generateMetadata(
 
   return {
     title: title || 'PRIMER',
-    description: description || 'A template repository for modern front-end Next.js 15+ builds.',
+    description:
+      description ||
+      'A template repository for modern front-end Next.js 15+ builds.',
     keywords: metadata.keywords || undefined,
     authors: [{ name: metadata.siteAuthor || 'Evening Labs' }],
     creator: metadata.siteAuthor || 'Evening Labs | piecemakr',
@@ -235,9 +237,7 @@ export async function generateMetadata(
     },
     other: {
       'apple-mobile-web-app-title':
-        metadata.appleMobileWebAppTitle ||
-        metadata.siteTitle ||
-        'PRIMER',
+        metadata.appleMobileWebAppTitle || metadata.siteTitle || 'PRIMER',
     },
   };
 }

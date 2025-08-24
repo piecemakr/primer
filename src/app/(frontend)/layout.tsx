@@ -4,6 +4,7 @@ import '@/styles/globals.css';
 
 import { LenisProvider } from '@/providers/lenis';
 import { generateMetadata as generateSiteMetadata } from '@/app/metadata';
+import { ThemeProvider } from '@/providers/theme';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -26,7 +27,11 @@ export default function RootLayout({
 }>) {
   return (
     <div className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-      <LenisProvider>{children}</LenisProvider>
+      <LenisProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+        </ThemeProvider>
+      </LenisProvider>
     </div>
   );
 }

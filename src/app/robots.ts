@@ -5,7 +5,8 @@ export default async function robots() {
 
   const robotsIndex = metadata?.robotsIndex !== false;
   const robotsFollow = metadata?.robotsFollow !== false;
-  const canonicalUrl = metadata?.canonicalUrl || 'https://primer.eveninglabs.io';
+  const canonicalUrl =
+    metadata?.canonicalUrl || 'https://primer.eveninglabs.io';
 
   return {
     rules: [
