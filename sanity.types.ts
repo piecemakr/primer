@@ -375,8 +375,7 @@ export type PostPagesSlugsResult = Array<never>;
 export type PagesSlugsResult = Array<never>;
 
 // Query TypeMap
-import '@sanity/client';
-declare module '@sanity/client' {
+declare module 'sanity' {
   interface SanityQueries {
     '*[_type == "settings"][0]': SettingsQueryResult;
     '\n  *[_type == \'page\' && slug.current == $slug][0]{\n    _id,\n    _type,\n    name,\n    slug,\n    heading,\n    subheading,\n    "pageBuilder": pageBuilder[]{\n      ...,\n      _type == "callToAction" => {\n        \n  link {\n      ...,\n      \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n      }\n,\n      },\n      _type == "infoSection" => {\n        content[]{\n          ...,\n          markDefs[]{\n            ...,\n            \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n          }\n        }\n      },\n    },\n  }\n': GetPageQueryResult;
