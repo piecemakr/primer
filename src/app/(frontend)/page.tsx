@@ -25,7 +25,7 @@ const ASCII_ART = `██████╗ ██████╗ ██╗██�
 ██║     ██║  ██║██║██║ ╚═╝ ██║███████╗██║  ██║██╗
 ╚═╝     ╚═╝  ╚═╝╚═╝╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝╚═╝`;
 
-const GIT_COMMAND = 'git clone https://github.com/piecemkar/primer.git';
+const GIT_COMMAND = 'git clone /piecemkar/primer.git';
 
 // Common animation variants
 const fadeInUp = {
@@ -49,34 +49,50 @@ const STACK_ITEMS = [
   {
     name: 'Next.js',
     icon: 'nextjs.svg',
+    link: 'https://nextjs.org/',
+    stack: 'core',
   },
   {
     name: 'Tailwind CSS',
     icon: 'tailwindcss.svg',
+    link: 'https://tailwindcss.com/',
+    stack: 'core',
   },
   {
     name: 'TypeScript',
     icon: 'typescript.svg',
-  },
-  {
-    name: 'Sanity',
-    icon: 'sanity.svg',
+    link: 'https://www.typescriptlang.org/',
+    stack: 'core',
   },
   {
     name: 'Shadcn UI',
     icon: 'shadcn.svg',
+    link: 'https://ui.shadcn.com/',
+    stack: 'packages',
+  },
+  {
+    name: 'Sanity',
+    icon: 'sanity.svg',
+    link: 'https://www.sanity.io/',
+    stack: 'packages',
   },
   {
     name: 'Framer Motion',
     icon: 'framer.svg',
-  },
-  {
-    name: 'Vercel',
-    icon: 'vercel.svg',
+    link: 'https://www.framer.com/motion/',
+    stack: 'packages',
   },
   {
     name: 'Resend',
     icon: 'resend.svg',
+    link: 'https://resend.com/',
+    stack: 'packages',
+  },
+  {
+    name: 'Better-Auth',
+    icon: 'better-auth.svg',
+    link: 'https://better-auth.com/',
+    stack: 'packages',
   },
 ];
 
@@ -84,7 +100,7 @@ const STACK_ITEMS = [
 
 export default function Page() {
   return (
-    <section className="relative w-full h-screen flex items-center justify-center bg-background overflow-hidden select-none">
+    <section className="relative w-full h-screen flex items-center justify-center bg-background overflow-hidden select-none px-6">
       <div className="flex flex-col items-censtartter">
         <Logo />
         <Description />
@@ -102,7 +118,7 @@ function Logo() {
     row: number;
     col: number;
   } | null>(null);
-  const { theme, resolvedTheme } = useTheme();
+  const { resolvedTheme } = useTheme();
 
   const getCharStyle = (row: number, col: number) => {
     if (!hoveredChar)
@@ -188,6 +204,8 @@ function Logo() {
   );
 }
 
+///////////////////////////////////////////////////////////////////////
+
 function Description() {
   return (
     <motion.p
@@ -230,10 +248,13 @@ function Description() {
   );
 }
 
+///////////////////////////////////////////////////////////////////////
+
+
 function Stack() {
   return (
     <motion.div
-      className="flex flex-row gap-4 pt-12"
+      className="flex flex-col gap-1 pt-12"
       initial={{ opacity: 0, y: 70, filter: 'blur(4px)' }}
       animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
       transition={{
@@ -245,8 +266,18 @@ function Stack() {
       }}
     >
       <>
+
+        <div className="flex flex-row gap-24 text-xs text-muted-foreground font-mono">
+          <p>Core</p>
+          <p>Packages</p>
+        </div>
+
         <div className="flex flex-row pl-2">
-          {STACK_ITEMS.map((item, index) => (
+          {STACK_ITEMS.sort((a, b) => {
+            if (a.stack === 'core' && b.stack !== 'core') return -1;
+            if (a.stack !== 'core' && b.stack === 'core') return 1;
+            return 0;
+          }).map((item, index) => (
             <motion.div
               key={item.name}
               className="flex flex-row items-center -ml-2 bg-accent rounded-full size-12 shadow-lg"
@@ -275,6 +306,8 @@ function Stack() {
   );
 }
 
+///////////////////////////////////////////////////////////////////////
+
 function Cli() {
   const [copied, setCopied] = useState(false);
 
@@ -291,7 +324,7 @@ function Cli() {
 
   return (
     <div
-      className={`${ibmPlexMono.className} mt-12 text-sm flex flex-row gap-4`}
+      className={`${ibmPlexMono.className} flex mt-12 text-xs flex-col md:flex-row gap-4 w-max`}
     >
       <motion.div
         initial={{ opacity: 0, y: 20, filter: 'blur(4px)' }}
@@ -303,7 +336,7 @@ function Cli() {
           mass: 1,
           delay: 0.8,
         }}
-        className="flex flex-row items-center justify-center gap-3 relative rounded-full bg-accent pl-5 pr-7 py-3 shadow-xl overflow-none"
+        className="flex flex-row md:items-center sm:justify-center gap-3 relative rounded-full bg-accent pl-5 pr-7 py-3 shadow-xl overflow-none"
       >
         <motion.div
           initial={{ opacity: 0, y: 10, filter: 'blur(4px)' }}
@@ -395,6 +428,8 @@ function Cli() {
     </div>
   );
 }
+
+///////////////////////////////////////////////////////////////////////
 
 function ScrambleText({
   text,
