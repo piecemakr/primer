@@ -191,7 +191,7 @@ function Logo() {
               <motion.span
                 className="inline-block cursor-default"
                 animate={getCharStyle(rowIndex, colIndex)}
-                transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+                transition={{ type: 'spring', stiffness: 200, damping: 10 }}
                 style={{ transformOrigin: 'center' }}
               >
                 {char}

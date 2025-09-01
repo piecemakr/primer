@@ -40,7 +40,9 @@ export interface SiteMetadata {
 
 export async function getMetadata(): Promise<SiteMetadata> {
   try {
-    const metadata = await client.fetch(metadataQuery);
+    const metadata = await client.fetch(metadataQuery, {}, {
+      next: { tags: ['metadata'] }
+    });
 
     if (!metadata) {
       return createEmptyMetadata();

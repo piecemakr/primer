@@ -2,11 +2,14 @@
   "name": "easylift",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@9.15.0",
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "fmt": "prettier --write .",
     "fmt:check": "prettier --check .",
     "sanity:types": "sanity typegen generate",
@@ -46,6 +49,16 @@
     "tailwindcss": "^4",
     "tw-animate-css": "^1.3.7",
     "typescript": "^5"
+  },
+  "compilerOptions": {
+    "target": "ES2022",
+    "allowJs": false,
+    "verbatimModuleSyntax": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true
+  },
+  "engines": { 
+    "node": ">=18.18.0" 
   },
   "prettier": {
     "trailingComma": "es5",
